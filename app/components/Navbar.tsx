@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 const isBrowser = () => typeof window !== "undefined";
 
@@ -10,7 +11,6 @@ const Navbar = () => {
   const [navTransparent, setNavTransparent] = useState(true);
   const changeNavbarColor = () => {
     if (window.scrollY >= 120) {
-      console.log(window.scrollY);
       setNavTransparent(false);
     } else {
       setNavTransparent(true);
@@ -18,25 +18,21 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(window);
     if (isBrowser()) {
       window.addEventListener("scroll", changeNavbarColor);
     }
   }, [window]);
 
-  useEffect(() => {
-    console.log("navTransparent: " + navTransparent);
-  }, [navTransparent]);
-
-  // $ Window is not defined
+  var navClasname = classNames(
+    {
+      "bg-white-1/75": navTransparent,
+      "bg-white-1": !navTransparent,
+    },
+    "flex text-dark-1 justify-end items-center gap-6 py-2 px-6 drop-shadow-md sticky top-0 z-10 overflow-hidden transition duration-300"
+  );
 
   return (
-    <nav
-      className={`${
-        navTransparent ? "bg-white-1/75" : "bg-white-1"
-      } flex text-dark-1 justify-end items-center gap-6 py-2 px-6 drop-shadow-md sticky top-0 z-10 overflow-hidden
-      transition duration-300`}
-    >
+    <nav className={navClasname}>
       <Link href="/" className="ml-4 mr-auto">
         <div>
           <Image
