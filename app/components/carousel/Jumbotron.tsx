@@ -1,6 +1,7 @@
 "use client";
 
-import "./embla.css";
+import styles from "./styles/Embla.module.css";
+// import "./styles/Jumbotron.module.css";
 import React, { useCallback } from "react";
 import useEmblaCarousel, {
   EmblaOptionsType,
@@ -11,14 +12,24 @@ import Autoplay from "embla-carousel-autoplay";
 import imageByIndex from "./imageByIndex";
 import Image from "next/image";
 import { BorderedButton } from "../Buttons";
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons,
+} from "./CarouselArrowButtons";
+import classNames from "classnames/bind";
 
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  withButton?: boolean;
+  withPreview?: boolean;
 };
 
+var cx = classNames.bind(styles);
+
 const Jumbotron: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+  const { slides, options, withButton, withPreview } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
   const onButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
@@ -32,21 +43,28 @@ const Jumbotron: React.FC<PropType> = (props) => {
     onButtonClick
   );
 
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi, onButtonClick);
+
   return (
-    <div className="embla">
+    <div className={styles.embla}>
       <BorderedButton
         href="/profil"
-        className="absolute top-1/2 left-40 z-10"
+        className="absolute top-1/2 left-[10%] z-10"
         stylingClassname="tracking-wider border-white-1"
       >
         TELUSURI
       </BorderedButton>
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
           {slides.map((index) => (
-            <div className="embla__slide" key={index}>
+            <div className={styles.embla__slide} key={index}>
               <Image
-                className="embla__slide__img"
+                className={styles.embla__slide__img}
                 src={imageByIndex(index)}
                 alt="Your alt text"
                 width={1920}
@@ -57,14 +75,24 @@ const Jumbotron: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__dots">
+      {!withButton ? (
+        <></>
+      ) : (
+        <div className={styles.embla__buttons}>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
+      )}
+
+      <div className={styles.embla__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
             onClick={() => onDotButtonClick(index)}
-            className={"embla__dot".concat(
-              index === selectedIndex ? " embla__dot--selected" : ""
-            )}
+            className={cx({
+              embla: true,
+              embla__dot__selected: index === selectedIndex,
+            })}
           />
         ))}
       </div>

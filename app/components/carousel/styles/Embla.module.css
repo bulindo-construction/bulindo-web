@@ -1,13 +1,8 @@
 .embla {
   --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 30rem;
-  --background-site: rgb(255, 255, 255, 50);
-  --background-site-rgb-value: rgb(255, 255, 255);
-  --brand-primary: rgb(33, 50, 105);
-  --brand-secondary: rgb(101, 162, 179);
-  /* padding: 1.6rem; */
-  position: relative
+  --slide-height: 35rem;
+  position: relative;
 }
 .embla__viewport {
   overflow: hidden;
@@ -129,13 +124,13 @@
   transition: all 300ms;
 }
 .embla__dot:after {
-  background: rgba(var(--val--white-1, 25));
+  background: rgba(var(--val--white-1, .25));
   border-radius: 0.3rem;
   width: 100%;
   height: 0.5rem;
   content: '';
 }
-.embla__dot--selected:after {
+.embla__dot__selected:after {
   background: linear-gradient(
     45deg,
     var(--secondary-1),
