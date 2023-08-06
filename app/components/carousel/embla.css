@@ -1,7 +1,7 @@
 .embla {
   --slide-spacing: 1rem;
   --slide-size: 100%;
-  --slide-height: 30rem;
+  --slide-height: 40rem;
   --background-site: rgb(255, 255, 255, 50);
   --background-site-rgb-value: rgb(255, 255, 255);
   --brand-primary: rgb(33, 50, 105);
@@ -63,7 +63,6 @@
   bottom: 0;
 }
 .embla__button {
-  -webkit-appearance: none;
   background-color: transparent;
   touch-action: manipulation;
   display: inline-flex;
@@ -81,7 +80,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%);
 }
 .embla__button {
   z-index: 1;
@@ -101,7 +100,6 @@
   height: 65%;
 }
 .embla__dot {
-  -webkit-appearance: none;
   background-color: transparent;
   touch-action: manipulation;
   display: inline-flex;
@@ -113,7 +111,7 @@
 }
 .embla__dots {
   z-index: 1;
-  bottom: 1.6rem;
+  bottom: 1rem;
   position: absolute;
   left: 0;
   right: 0;
@@ -122,24 +120,24 @@
   align-items: center;
 }
 .embla__dot {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.7rem;
+  height: 1rem;
   display: flex;
   align-items: center;
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
+  margin: 0 0.5rem;
+  transition: all 300ms;
 }
 .embla__dot:after {
-  background: var(--background-site);
-  border-radius: 0.2rem;
+  background: rgba(var(--val--white-1, 25));
+  border-radius: 0.3rem;
   width: 100%;
-  height: 0.3rem;
+  height: 0.5rem;
   content: '';
 }
 .embla__dot--selected:after {
   background: linear-gradient(
     45deg,
-    var(--brand-primary),
-    var(--brand-secondary)
+    var(--primary-2),
+    var(--secondary-1)
   );
 }

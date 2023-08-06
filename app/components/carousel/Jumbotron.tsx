@@ -6,12 +6,12 @@ import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaCarouselType,
 } from "embla-carousel-react";
-import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
+import { DotButton, useDotButton } from "./CarouselDotButton";
 import {
   PrevButton,
   NextButton,
   usePrevNextButtons,
-} from "./EmblaCarouselArrowButtons";
+} from "./CarouselArrowButtons";
 import Autoplay from "embla-carousel-autoplay";
 import imageByIndex from "./imageByIndex";
 import Image from "next/image";
@@ -64,10 +64,10 @@ const Jumbotron: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__buttons">
+      {/* <div className="embla__buttons">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      </div>
+      </div> */}
 
       <div className="embla__dots">
         {scrollSnaps.map((_, index) => (

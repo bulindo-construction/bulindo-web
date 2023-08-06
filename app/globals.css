@@ -6,6 +6,36 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --logo: rgb(43, 45, 96);
+  --primary-1: rgb(33, 50, 105);
+  --primary-1-light: rgb(191, 212, 230);
+  --primary-2: rgb(31, 78, 120);
+  --secondary-1: rgb(101, 162, 179);
+  --Secondary-1-light: rgb(227, 252, 249);
+  --secondary-2: rgb(133, 183, 191);
+  --accent-1: rgb(162, 208, 204);
+  --dark-1: rgb(16, 23, 46);
+  --white-1: rgb(220, 234, 238);
+  --overlay-1: rgb(191, 212, 230);
+  --overlay-2: rgb(16, 23, 46);
+  --filter-1: rgb(191, 212, 230);
+
+  --val--logo: 43, 45, 96;
+  --val--primary-1: 33, 50, 105;
+  --val--primary-1-light: 191, 212, 230;
+  --val--primary-2: 31, 78, 120;
+  --val--secondary-1: 101, 162, 179;
+  --val--Secondary-1-light: 227, 252, 249;
+  --val--secondary-2: 133, 183, 191;
+  --val--accent-1: 162, 208, 204;
+  --val--dark-1: 16, 23, 46;
+  --val--white-1: 220, 234, 238;
+  --val--overlay-1: 191, 212, 230;
+  --val--overlay-2: 16, 23, 46;
+  --val--filter-1: 191, 212, 230;
+  
+  --navbar-height: 5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,11 +47,10 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--dark-1);
+  background-color: var(--white-1);
+}
+
+.navbar {
+  height: var(--navbar-height);
 }
