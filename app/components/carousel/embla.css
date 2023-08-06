@@ -1,7 +1,7 @@
 .embla {
-  --slide-spacing: 1rem;
+  --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 40rem;
+  --slide-height: 30rem;
   --background-site: rgb(255, 255, 255, 50);
   --background-site-rgb-value: rgb(255, 255, 255);
   --brand-primary: rgb(33, 50, 105);
@@ -11,6 +11,7 @@
 }
 .embla__viewport {
   overflow: hidden;
+  z-index: 0;
 }
 .embla__container {
   backface-visibility: hidden;
@@ -137,7 +138,7 @@
 .embla__dot--selected:after {
   background: linear-gradient(
     45deg,
-    var(--primary-2),
-    var(--secondary-1)
+    var(--secondary-1),
+    var(--secondary-2)
   );
 }

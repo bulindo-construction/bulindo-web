@@ -7,14 +7,10 @@ import useEmblaCarousel, {
   EmblaCarouselType,
 } from "embla-carousel-react";
 import { DotButton, useDotButton } from "./CarouselDotButton";
-import {
-  PrevButton,
-  NextButton,
-  usePrevNextButtons,
-} from "./CarouselArrowButtons";
 import Autoplay from "embla-carousel-autoplay";
 import imageByIndex from "./imageByIndex";
 import Image from "next/image";
+import { BorderedButton } from "../Buttons";
 
 type PropType = {
   slides: number[];
@@ -36,38 +32,30 @@ const Jumbotron: React.FC<PropType> = (props) => {
     onButtonClick
   );
 
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick,
-  } = usePrevNextButtons(emblaApi, onButtonClick);
-
   return (
     <div className="embla">
+      <BorderedButton
+        href="/profil"
+        className="absolute top-1/2 left-40 z-10"
+        stylingClassname="tracking-wider border-white-1"
+      >
+        TELUSURI
+      </BorderedButton>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
             <div className="embla__slide" key={index}>
-              <div className="embla__slide__number">
-                <span>{index + 1}</span>
-              </div>
               <Image
                 className="embla__slide__img"
                 src={imageByIndex(index)}
                 alt="Your alt text"
-                width={1440}
-                height={540}
+                width={1920}
+                height={1080}
               />
             </div>
           ))}
         </div>
       </div>
-
-      {/* <div className="embla__buttons">
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      </div> */}
 
       <div className="embla__dots">
         {scrollSnaps.map((_, index) => (

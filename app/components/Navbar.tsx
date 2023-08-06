@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import classNames from "classnames";
 
 const isBrowser = () => typeof window !== "undefined";
+const SCROLL_HEIGHT_TRANSITION = 120;
+const LOGO_WIDTH = 136;
+const LOGO_HEIGHT = 40;
+const LOGO_IMAGE = "/logo-nav.png";
 
 const Navbar = () => {
   const [navTransparent, setNavTransparent] = useState(true);
   const changeNavbarColor = () => {
-    if (window.scrollY >= 120) {
+    if (window.scrollY >= SCROLL_HEIGHT_TRANSITION) {
       setNavTransparent(false);
     } else {
       setNavTransparent(true);
@@ -23,7 +27,7 @@ const Navbar = () => {
     }
   }, [window]);
 
-  var navClasname = classNames(
+  var navClassname = classNames(
     {
       "bg-white-1/[.85]": navTransparent,
       "bg-white-1": !navTransparent,
@@ -32,14 +36,14 @@ const Navbar = () => {
   );
 
   return (
-    <nav className={navClasname}>
+    <nav className={navClassname}>
       <Link href="/" className="ml-4 mr-auto">
         <div>
           <Image
             alt="Bulindo Construction"
-            width={136}
-            height={40}
-            src="/logo-nav.png"
+            width={LOGO_WIDTH}
+            height={LOGO_HEIGHT}
+            src={LOGO_IMAGE}
           />
         </div>
       </Link>
