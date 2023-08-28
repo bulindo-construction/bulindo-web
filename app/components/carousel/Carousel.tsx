@@ -1,14 +1,13 @@
 "use client";
 
-import "./styles/Embla.module.css";
-import "./styles/Carousel.module.css";
+import styles from "./styles/Carousel.module.css";
 import React, { useCallback } from "react";
 import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaCarouselType,
 } from "embla-carousel-react";
 import { DotButton, useDotButton } from "./CarouselDotButton";
-import Autoplay from "embla-carousel-autoplay";
+import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay";
 import imageByIndex from "./imageByIndex";
 import Image from "next/image";
 import {
@@ -16,15 +15,21 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from "./CarouselArrowButtons";
+import classNames from "classnames/bind";
 
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  autoplayOptions?: AutoplayOptionsType;
 };
 
+var cx = classNames.bind(styles);
+
 const Carousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+  const { slides, options, autoplayOptions } = props;
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay(autoplayOptions),
+  ]);
 
   const onButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const { autoplay } = emblaApi.plugins();
@@ -45,13 +50,13 @@ const Carousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
   return (
-    <div className="embla carousel">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+    <div className={styles.embla}>
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
           {slides.map((index) => (
-            <div className="embla__slide" key={index}>
+            <div className={styles.embla__slide} key={index}>
               <Image
-                className="embla__slide__img"
+                className={styles.embla__slide__img}
                 src={imageByIndex(index)}
                 alt="Your alt text"
                 width={1920}
@@ -62,19 +67,20 @@ const Carousel: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__buttons">
+      <div className={styles.embla__buttons}>
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
 
-      <div className="embla__dots">
+      <div className={styles.embla__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
             onClick={() => onDotButtonClick(index)}
-            className={"embla__dot".concat(
-              index === selectedIndex ? " embla__dot--selected" : ""
-            )}
+            className={cx({
+              embla__dot: true,
+              embla__dot__selected: index === selectedIndex,
+            })}
           />
         ))}
       </div>

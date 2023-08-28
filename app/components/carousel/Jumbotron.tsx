@@ -1,14 +1,14 @@
 "use client";
 
-import styles from "./styles/Embla.module.css";
-// import "./styles/Jumbotron.module.css";
+// import styles from "./styles/Embla.module.css";
+import styles from "./styles/Jumbotron.module.css";
 import React, { useCallback } from "react";
 import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaCarouselType,
 } from "embla-carousel-react";
 import { DotButton, useDotButton } from "./CarouselDotButton";
-import Autoplay from "embla-carousel-autoplay";
+import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay";
 import imageByIndex from "./imageByIndex";
 import Image from "next/image";
 import { BorderedButton } from "../Buttons";
@@ -22,6 +22,7 @@ import classNames from "classnames/bind";
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  autoplayOptions?: AutoplayOptionsType;
   withButton?: boolean;
   withPreview?: boolean;
 };
@@ -29,8 +30,10 @@ type PropType = {
 var cx = classNames.bind(styles);
 
 const Jumbotron: React.FC<PropType> = (props) => {
-  const { slides, options, withButton, withPreview } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+  const { slides, options, autoplayOptions, withButton, withPreview } = props;
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay(autoplayOptions),
+  ]);
 
   const onButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const { autoplay } = emblaApi.plugins();

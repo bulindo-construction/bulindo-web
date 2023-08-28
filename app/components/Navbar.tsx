@@ -25,7 +25,7 @@ const Navbar = () => {
     if (isBrowser()) {
       window.addEventListener("scroll", changeNavbarColor);
     }
-  }, [window]);
+  }, []);
 
   var navClassname = classNames(
     {

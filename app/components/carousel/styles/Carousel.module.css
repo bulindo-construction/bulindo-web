@@ -1,7 +1,7 @@
-/* .carousel {
+.embla {
   --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 20rem;
+  --slide-height: 30rem;
   position: relative
 }
 .embla__viewport {
@@ -59,7 +59,7 @@
   bottom: 0;
 }
 .embla__button {
-  background-color: rgba(var(--val--white-1), 0.85);
+  background-color: transparent;
   touch-action: manipulation;
   display: inline-flex;
   text-decoration: none;
@@ -130,10 +130,10 @@
   height: 0.5rem;
   content: '';
 }
-.embla__dot--selected:after {
+.embla__dot__selected:after {
   background: linear-gradient(
     45deg,
     var(--secondary-1),
     var(--secondary-2)
   );
-} */
+}
