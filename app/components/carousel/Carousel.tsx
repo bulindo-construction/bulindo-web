@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles/Carousel.module.css";
-import React, { useCallback } from "react";
+import React, { useCallback, PropsWithChildren } from "react";
 import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaCarouselType,
@@ -21,12 +21,15 @@ type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
   autoplayOptions?: AutoplayOptionsType;
+  flip?: boolean;
+  textBgClassName: string;
 };
 
 var cx = classNames.bind(styles);
 
-const Carousel: React.FC<PropType> = (props) => {
-  const { slides, options, autoplayOptions } = props;
+const Carousel: React.FC<PropsWithChildren<PropType>> = (props) => {
+  const { slides, options, autoplayOptions, flip, textBgClassName, children } =
+    props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay(autoplayOptions),
   ]);
@@ -50,39 +53,46 @@ const Carousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
   return (
-    <div className={styles.embla}>
-      <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={styles.embla__container}>
+    <div className={cx({ carousel_flip: flip, carousel: true, lockup: true })}>
+      <div
+        className={cx(textBgClassName, {
+          carousel__text_section: true,
+        })}
+      >
+        {children}
+      </div>
+      <div className={styles.carousel__utility_container}>
+        <div className={styles.carousel__buttons}>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
+        <div className={styles.carousel__dots}>
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={cx({
+                carousel__dot: true,
+                carousel__dot__selected: index === selectedIndex,
+              })}
+            />
+          ))}
+        </div>
+      </div>
+      <div className={styles.carousel__viewport} ref={emblaRef}>
+        <div className={styles.carousel__container}>
           {slides.map((index) => (
-            <div className={styles.embla__slide} key={index}>
+            <div className={styles.carousel__slide} key={index}>
               <Image
-                className={styles.embla__slide__img}
+                className={styles.carousel__slide__img}
                 src={imageByIndex(index)}
-                alt="Your alt text"
+                alt=""
                 width={1920}
                 height={1080}
               />
             </div>
           ))}
         </div>
-      </div>
-
-      <div className={styles.embla__buttons}>
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      </div>
-
-      <div className={styles.embla__dots}>
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => onDotButtonClick(index)}
-            className={cx({
-              embla__dot: true,
-              embla__dot__selected: index === selectedIndex,
-            })}
-          />
-        ))}
       </div>
     </div>
   );

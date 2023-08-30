@@ -3,11 +3,12 @@ import Jumbotron from "./components/carousel/Jumbotron";
 import { EmblaOptionsType } from "embla-carousel-react";
 import Carousel from "./components/carousel/Carousel";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
+import { BorderedTransparentButton } from "./components/Buttons";
 
-const JUMBOTRON_AUTOPLAY_OPTIONS: AutoplayOptionsType = { delay: 5000 };
+const JUMBOTRON_AUTOPLAY_OPTIONS: AutoplayOptionsType = { delay: 8000 };
 const OPTIONS: EmblaOptionsType = { loop: true };
 const CAROUSEL_AUTOPLAY_OPTIONS: AutoplayOptionsType = {
-  delay: 3500,
+  delay: 5000,
 };
 const CAROUSEL_OPTIONS: EmblaOptionsType = {
   loop: true,
@@ -17,19 +18,51 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between z-0">
+    <main className="flex min-h-screen flex-col items-center justify-between z-0 gap-32">
       <Jumbotron
         slides={SLIDES}
         options={OPTIONS}
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
       />
-      <div className="py-32 px-40">
-        <Carousel
-          slides={SLIDES}
-          options={CAROUSEL_OPTIONS}
-          autoplayOptions={CAROUSEL_AUTOPLAY_OPTIONS}
-        ></Carousel>
-      </div>
+      <Carousel
+        slides={SLIDES}
+        options={CAROUSEL_OPTIONS}
+        autoplayOptions={CAROUSEL_AUTOPLAY_OPTIONS}
+        textBgClassName="bg-gradient-1"
+      >
+        <h2 className="text-3xl font-light">Layanan</h2>
+        <p className="mb-12 text-md text-center">
+          Dengan spesialiasi pada desain dan pembangunan, kami menyediakan
+          layanan yang sesuai dengan kebutuhan Anda
+        </p>
+        <BorderedTransparentButton
+          href="/layanan"
+          className=""
+          stylingClassname="tracking-wider border-white-1"
+        >
+          TELUSURI
+        </BorderedTransparentButton>
+      </Carousel>
+      <Carousel
+        slides={SLIDES}
+        options={CAROUSEL_OPTIONS}
+        autoplayOptions={CAROUSEL_AUTOPLAY_OPTIONS}
+        textBgClassName={"bg-gradient-2"}
+        flip
+      >
+        <h2 className="text-3xl font-light">Portofolio</h2>
+        <p className="mb-12 text-md text-center">
+          Mulai dari rumah sampai perusahaan multinasional, kami memiliki
+          pengalaman dengan klien-klien yang bervariasi
+        </p>
+        <BorderedTransparentButton
+          href="/portofolio"
+          className=""
+          stylingClassname="tracking-wider border-white-1"
+        >
+          TELUSURI
+        </BorderedTransparentButton>
+      </Carousel>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;

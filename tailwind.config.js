@@ -48,6 +48,8 @@ module.exports = {
         "full": "9999px"
       },
       backgroundImage: {
+        'gradient-1': 'linear-gradient(180deg, rgba(31, 78, 120, 0.90) 0%, rgba(33, 50, 105, 0.90) 100%)',
+        'gradient-2': 'linear-gradient(180deg, rgba(31, 104, 120, 0.90) 0%, rgba(33, 105, 101, 0.90) 100%)',
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

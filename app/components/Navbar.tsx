@@ -32,7 +32,7 @@ const Navbar = () => {
       "bg-white-1/[.85]": navTransparent,
       "bg-white-1": !navTransparent,
     },
-    "flex text-dark-1 justify-end items-center gap-6 py-2 px-6 w-full drop-shadow-md fixed top-0 z-10 overflow-hidden transition duration-300"
+    "flex text-dark-1 justify-end items-center gap-6 py-2 px-6 w-full drop-shadow-md fixed top-0 z-50 overflow-hidden transition duration-300"
   );
 
   return (

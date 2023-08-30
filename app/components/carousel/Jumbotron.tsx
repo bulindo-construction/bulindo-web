@@ -1,6 +1,5 @@
 "use client";
 
-// import styles from "./styles/Embla.module.css";
 import styles from "./styles/Jumbotron.module.css";
 import React, { useCallback } from "react";
 import useEmblaCarousel, {
@@ -54,7 +53,7 @@ const Jumbotron: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
   return (
-    <div className={styles.embla}>
+    <div className={styles.jumbotron}>
       <BorderedButton
         href="/profil"
         className="absolute top-1/2 left-[10%] z-10"
@@ -62,14 +61,14 @@ const Jumbotron: React.FC<PropType> = (props) => {
       >
         TELUSURI
       </BorderedButton>
-      <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={styles.embla__container}>
+      <div className={styles.jumbotron__viewport} ref={emblaRef}>
+        <div className={styles.jumbotron__container}>
           {slides.map((index) => (
-            <div className={styles.embla__slide} key={index}>
+            <div className={styles.jumbotron__slide} key={index}>
               <Image
-                className={styles.embla__slide__img}
+                className={styles.jumbotron__slide__img}
                 src={imageByIndex(index)}
-                alt="Your alt text"
+                alt=""
                 width={1920}
                 height={1080}
               />
@@ -81,20 +80,20 @@ const Jumbotron: React.FC<PropType> = (props) => {
       {!withButton ? (
         <></>
       ) : (
-        <div className={styles.embla__buttons}>
+        <div className={styles.jumbotron__buttons}>
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
       )}
 
-      <div className={styles.embla__dots}>
+      <div className={styles.jumbotron__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
             onClick={() => onDotButtonClick(index)}
             className={cx({
-              embla: true,
-              embla__dot__selected: index === selectedIndex,
+              jumbotron: true,
+              jumbotron__dot__selected: index === selectedIndex,
             })}
           />
         ))}

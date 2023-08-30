@@ -1,32 +1,32 @@
-.embla {
+.jumbotron {
   --slide-spacing: 0;
   --slide-size: 100%;
   --slide-height: 45rem;
   position: relative;
 }
-.embla__viewport {
+.jumbotron__viewport {
   overflow: hidden;
   z-index: 0;
 }
-.embla__container {
+.jumbotron__container {
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y;
   margin-left: calc(var(--slide-spacing) * -1);
 }
-.embla__slide {
+.jumbotron__slide {
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;
 }
-.embla__slide__img {
+.jumbotron__slide__img {
   display: block;
   height: var(--slide-height);
   width: 100%;
   object-fit: cover;
 }
-.embla__slide__number {
+.jumbotron__slide__number {
   width: 4.6rem;
   height: 4.6rem;
   z-index: 1;
@@ -40,7 +40,7 @@
   text-align: center;
   pointer-events: none;
 }
-.embla__slide__number > span {
+.jumbotron__slide__number > span {
   color: var(--brand-primary);
   background-image: linear-gradient(
     45deg,
@@ -58,7 +58,7 @@
   right: 0;
   bottom: 0;
 }
-.embla__button {
+.jumbotron__button {
   background-color: transparent;
   touch-action: manipulation;
   display: inline-flex;
@@ -68,7 +68,7 @@
   padding: 0;
   margin: 0;
 }
-.embla__buttons {
+.jumbotron__buttons {
   display: flex;
   width: 90%;
   align-items: center;
@@ -78,7 +78,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.embla__button {
+.jumbotron__button {
   z-index: 1;
   color: var(--background-site);
   display: flex;
@@ -88,14 +88,14 @@
   width: 4rem;
   height: 4rem;
 }
-.embla__button:disabled {
+.jumbotron__button:disabled {
   opacity: 0.3;
 }
-.embla__button__svg {
+.jumbotron__button__svg {
   width: 65%;
   height: 65%;
 }
-.embla__dot {
+.jumbotron__dot {
   background-color: transparent;
   touch-action: manipulation;
   display: inline-flex;
@@ -105,7 +105,7 @@
   padding: 0;
   margin: 0;
 }
-.embla__dots {
+.jumbotron__dots {
   z-index: 1;
   bottom: 1rem;
   position: absolute;
@@ -115,7 +115,7 @@
   justify-content: center;
   align-items: center;
 }
-.embla__dot {
+.jumbotron__dot {
   width: 1.7rem;
   height: 1rem;
   display: flex;
@@ -123,13 +123,13 @@
   margin: 0 0.5rem;
   transition: all 300ms;
 }
-.embla__dot:after {
+.jumbotron__dot:after {
   background: rgba(var(--val--white-1, 0.25));
   border-radius: 0.3rem;
   width: 100%;
   height: 0.5rem;
   content: "";
 }
-.embla__dot__selected:after {
+.jumbotron__dot__selected:after {
   background: linear-gradient(45deg, var(--secondary-1), var(--secondary-2));
 }
