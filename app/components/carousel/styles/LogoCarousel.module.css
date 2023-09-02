@@ -1,0 +1,103 @@
+.logocarousel {
+  --slide-spacing: 5rem;
+  --slide-size: 20%;
+  --slide-height: 12rem;
+  position: relative;
+  width: 100%;
+  height: var(--slide-height);
+}
+.logocarousel_flip {
+  flex-direction: row-reverse;
+}
+
+.logocarousel__viewport {
+  overflow: hidden;
+  z-index: 0;
+}
+.logocarousel__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(var(--val--white-true), 1) 10%, 
+    rgba(var(--val--white-true), 0.9) 15%, 
+    rgba(var(--val--white-true), 0.7) 20%, 
+    rgba(var(--val--white-true), 0) 25%, 
+    rgba(var(--val--white-true), 0) 75%, 
+    rgba(var(--val--white-true), 0.7) 80%, 
+    rgba(var(--val--white-true), 0.9) 85%, 
+    rgba(var(--val--white-true), 1) 90% 
+  );
+  z-index: 10;
+}
+
+.logocarousel__overlay:after {
+  background: rgba(var(--val--accent-1), .75);
+  border-radius: 0.3rem;
+  width: 100%;
+  height: 100%;
+  content: '';
+}
+.logocarousel__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.logocarousel__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}
+.logocarousel__slide__img {
+  display: block;
+  height: var(--slide-height);
+  width: 100%;
+  object-fit: contain;
+  border-radius: 1.2rem;
+}
+.logocarousel__buttons {
+  position: absolute;
+  display: flex;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%) translateY(-50%);
+}
+.logocarousel__button {
+  background-color: var(--overlay-1);
+  touch-action: manipulation;
+  text-decoration: none;
+  border: 0;
+  border-radius: 100rem;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  opacity: 0.75;
+  transition: all 200ms;
+}
+.logocarousel__button:hover {
+  opacity: 1;
+}
+.logocarousel__button:disabled {
+  opacity: 0.3;
+}
+.logocarousel__button__svg {
+  color: white;
+  width: 50%;
+  height: 50%;
+}

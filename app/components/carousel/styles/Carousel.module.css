@@ -13,13 +13,6 @@
   flex-direction: row-reverse;
 }
 
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
-  .carousel {
-    margin: 0;
-  }
-}
-
 .carousel__text_section {
   width: 30%;
   z-index: 10;

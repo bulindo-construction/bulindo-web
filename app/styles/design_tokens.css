@@ -16,6 +16,7 @@
   --overlay-1: rgb(191, 212, 230);
   --overlay-2: rgb(16, 23, 46);
   --filter-1: rgb(191, 212, 230);
+  --white-true: rgb(255, 255, 255);
 
   --val--logo: 43, 45, 96;
   --val--primary-1: 33, 50, 105;
@@ -30,6 +31,7 @@
   --val--overlay-1: 191, 212, 230;
   --val--overlay-2: 16, 23, 46;
   --val--filter-1: 191, 212, 230;
+  --val--white-true: 255, 255, 255;
   
   --gradient-1: linear-gradient(180deg, rgba(31, 78, 120, 0.90) 0%, rgba(33, 50, 105, 0.90) 100%);
   --gradient-2: linear-gradient(180deg, rgba(31, 104, 120, 0.90) 0%, rgba(33, 105, 101, 0.90) 100%);
