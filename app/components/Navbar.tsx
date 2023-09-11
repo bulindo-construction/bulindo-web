@@ -36,7 +36,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className={navClassname}>
+    <nav id="nav" className={navClassname}>
       <Link href="/" className="ml-4 mr-auto">
         <div>
           <Image

@@ -23,13 +23,14 @@ type PropType = {
   options?: EmblaOptionsType;
   autoplayOptions?: AutoplayOptionsType;
   withButton?: boolean;
+  withDots?: boolean;
   withPreview?: boolean;
 };
 
 var cx = classNames.bind(styles);
 
 const Jumbotron: React.FC<PropType> = (props) => {
-  const { slides, options, autoplayOptions, withButton, withPreview } = props;
+  const { slides, options, autoplayOptions, withButton, withDots } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay(autoplayOptions),
   ]);
@@ -56,8 +57,7 @@ const Jumbotron: React.FC<PropType> = (props) => {
     <div className={styles.jumbotron}>
       <BorderedButton
         href="/profil"
-        className="absolute top-1/2 left-[10%] z-10"
-        stylingClassname="tracking-wider border-white-1"
+        className="absolute top-1/2 left-[10%] z-10 tracking-wider border-white-1"
       >
         TELUSURI
       </BorderedButton>
@@ -86,18 +86,22 @@ const Jumbotron: React.FC<PropType> = (props) => {
         </div>
       )}
 
-      <div className={styles.jumbotron__dots}>
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => onDotButtonClick(index)}
-            className={cx({
-              jumbotron: true,
-              jumbotron__dot__selected: index === selectedIndex,
-            })}
-          />
-        ))}
-      </div>
+      {!withDots ? (
+        <></>
+      ) : (
+        <div className={styles.jumbotron__dots}>
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={cx({
+                jumbotron: true,
+                jumbotron__dot__selected: index === selectedIndex,
+              })}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

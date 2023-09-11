@@ -53,8 +53,7 @@ export default function Home() {
           </p>
           <BorderedTransparentButton
             href="/layanan"
-            className=""
-            stylingClassname="tracking-wider border-white-1"
+            className="tracking-wider border-white-1"
           >
             TELUSURI
           </BorderedTransparentButton>
@@ -75,8 +74,7 @@ export default function Home() {
           </p>
           <BorderedTransparentButton
             href="/portofolio"
-            className=""
-            stylingClassname="tracking-wider border-white-1"
+            className="tracking-wider border-white-1"
           >
             TELUSURI
           </BorderedTransparentButton>
