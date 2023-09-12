@@ -38,13 +38,13 @@
 
   --navbar-height: 5rem;
 
-  --font-size-sm: 0.875rem,
-  --font-size-base: 1rem,
-  --font-size-lg: 1.25rem,
-  --font-size-xl: 1.5rem,
-  --font-size-2xl: 1.75rem,
-  --font-size-3xl: 2.5rem,
-  --font-size-4xl: 3rem
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
 }
 
 @media (prefers-color-scheme: dark) {

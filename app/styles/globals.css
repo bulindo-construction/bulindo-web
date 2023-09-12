@@ -19,8 +19,8 @@ body {
 }
 
 h1 {
-  color: var(--dark-1);
-  font-size: var(--font-size-lg);
+  color: var(--primary-1);
+  font-size: var(--font-size-3xl);
 }
 
 p {

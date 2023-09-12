@@ -47,6 +47,10 @@ module.exports = {
         "lg": "1rem",
         "full": "9999px"
       },
+      backgroundColor: {
+        'overlay-1': 'rgba(191, 212, 230, 0.75)',
+        'overlay-2': 'rgba(16, 23, 46, 0.75)',
+      },
       backgroundImage: {
         'gradient-1': 'linear-gradient(180deg, rgba(31, 78, 120, 0.90) 0%, rgba(33, 50, 105, 0.90) 100%)',
         'gradient-2': 'linear-gradient(180deg, rgba(31, 104, 120, 0.90) 0%, rgba(33, 105, 101, 0.90) 100%)',

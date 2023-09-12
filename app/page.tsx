@@ -1,10 +1,7 @@
-import Image from "next/image";
-import Jumbotron from "./components/carousel/Jumbotron";
 import { EmblaOptionsType } from "embla-carousel-react";
-import Carousel from "./components/carousel/Carousel";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
-import { BorderedTransparentButton } from "./components/Buttons";
-import { LogoCarousel } from "./components/carousel";
+import { BorderedTransparentButton } from "@/app/components/Buttons";
+import { Jumbotron, Carousel, LogoCarousel } from "@/app/components/carousel";
 
 const JUMBOTRON_AUTOPLAY_OPTIONS: AutoplayOptionsType = {
   delay: 8000,
