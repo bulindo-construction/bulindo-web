@@ -15,7 +15,7 @@ const Footer: React.FC<Props> = (props) => {
   };
 
   return (
-    <footer className="border bg-white-1 border-t-primary-1 border-t-8">
+    <footer className="bg-white-1 border-t-primary-1 border-t-8">
       <div className="flex flex-wrap lockup px-6 xl:px-0 pt-12 pb-8 gap-8 justify-between sm:justify-around">
         <div className="flex flex-col w-full md:w-2/5 xl:w-1/5 gap-4 items-center sm:items-start">
           <Image

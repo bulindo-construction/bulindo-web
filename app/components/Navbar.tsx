@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
+import logo from "@/public/logo-nav.png";
 
 const isBrowser = () => typeof window !== "undefined";
 const SCROLL_HEIGHT_TRANSITION = 120;
 const LOGO_WIDTH = 136;
 const LOGO_HEIGHT = 40;
-const LOGO_IMAGE = "/logo-nav.png";
 
 const Navbar = () => {
   const [navTransparent, setNavTransparent] = useState(true);
@@ -38,14 +38,13 @@ const Navbar = () => {
   return (
     <nav id="nav" className={navClassname}>
       <Link href="/" className="ml-4 mr-auto">
-        <div>
-          <Image
-            alt="Bulindo Construction"
-            width={LOGO_WIDTH}
-            height={LOGO_HEIGHT}
-            src={LOGO_IMAGE}
-          />
-        </div>
+        <Image
+          alt="Bulindo Construction"
+          width={LOGO_WIDTH}
+          // height={LOGO_HEIGHT}
+          className="h-auto"
+          src={logo}
+        />
       </Link>
       <Link href="/">Beranda</Link>
       <Link href="/profil">Profil</Link>

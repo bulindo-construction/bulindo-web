@@ -1,7 +1,7 @@
 .jumbotron {
   --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 45rem;
+  --slide-height: 60vh;
   position: relative;
 }
 .jumbotron__viewport {

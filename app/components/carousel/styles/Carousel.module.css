@@ -1,9 +1,10 @@
 .carousel {
   --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 40rem;
+  --slide-height: 70vh;
   position: relative;
   width: 100%;
+  max-width: 70vw;
   height: var(--slide-height);
 
   display: flex;

@@ -13,8 +13,10 @@
   --accent-1: rgb(162, 208, 204);
   --dark-1: rgb(16, 23, 46);
   --white-1: rgb(220, 234, 238);
-  --overlay-1: rgb(191, 212, 230);
-  --overlay-2: rgb(16, 23, 46);
+  --overlay-1s: rgb(191, 212, 230);
+  --overlay-2s: rgb(16, 23, 46);
+  --overlay-1: rgba(191, 212, 230, 0.7);
+  --overlay-2: rgba(16, 23, 46, 0.7);
   --filter-1: rgb(191, 212, 230);
   --white-true: rgb(255, 255, 255);
 

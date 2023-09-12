@@ -4,7 +4,7 @@ import profilHighlight from "@/public/jumbotron/Jumbo-1.png";
 export default function Home() {
   return (
     <main className="flex flex-col items-center z-0">
-      <StaticJumbotron imgSource={profilHighlight} className={"h-[40vh]"}>
+      <StaticJumbotron imgSource={profilHighlight} className={"h-[45vh]"}>
         <h1 className="">Profil Perusahaan</h1>
       </StaticJumbotron>
       <div className="w-full py-16 bg-secondary-1-light">
