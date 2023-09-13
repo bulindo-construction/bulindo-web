@@ -1,7 +1,7 @@
 import { StaticJumbotron } from "@/app/components/carousel";
 import profilHighlight from "@/public/jumbotron/Jumbo-1.png";
 
-export default function Home() {
+export default function Profil() {
   return (
     <main className="flex flex-col items-center z-0">
       <StaticJumbotron imgSource={profilHighlight} className={"h-[45vh]"}>

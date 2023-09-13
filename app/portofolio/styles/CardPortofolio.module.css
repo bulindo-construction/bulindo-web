@@ -1,0 +1,40 @@
+.card_portofolio {
+  border: 0.4rem solid var(--primary-1);
+  padding: 0.35rem;
+}
+
+.card_portofolio__container {
+  position: relative;
+}
+
+.card_portofolio__textbar {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--val--overlay-1), 0.5);
+  display: flex;
+  opacity: 0;
+  transition: opacity 200ms ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card_portofolio__textbar:hover {
+  opacity: 1;
+}
+
+.card_portofolio__text {
+  background-color: rgba(var(--val--primary-1), 0.95);
+  color: var(--white-1);
+  font-size: var(--font-size-md);
+  padding: 0.8rem 1.2rem;
+}
+
+.card_portofolio__highlight {
+  object-fit: cover;
+  width: 20rem;
+  height: 14rem;
+}

@@ -6,3 +6,11 @@ export type Layanan = {
   highlightImg: string;
   images?: string[]
 }
+
+export type Portofolio = {
+  id: string;
+  name: string;
+  description: string;
+  highlightImg: string;
+  images?: string[]
+}
