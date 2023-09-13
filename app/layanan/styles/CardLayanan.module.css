@@ -1,0 +1,30 @@
+.card_layanan {
+  border: 0.4rem solid var(--primary-1);
+  padding: 0.35rem;
+}
+
+.card_layanan__container {
+  position: relative;
+}
+
+.card_layanan__textbar {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  background: var(--overlay-2);
+  display: flex;
+}
+
+.card_layanan__text {
+  background-color: var(--primary-1);
+  color: var(--white-1);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-lg);
+}
+
+.card_layanan__highlight {
+  object-fit: cover;
+  width: 28rem;
+  height: 18rem;
+}
