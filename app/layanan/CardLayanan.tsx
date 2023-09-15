@@ -5,11 +5,11 @@ import { LayananItem } from "@/app/layanan/page";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
+type PropType = {
   layanan: LayananItem;
 };
 
-const CardLayanan = (props: Props) => {
+const CardLayanan = (props: PropType) => {
   const { id, name, category, highlightImg } = props.layanan;
   return (
     <Link href={`/layanan/${id}`} id={id} className={styles.card_layanan}>

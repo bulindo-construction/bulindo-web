@@ -5,6 +5,7 @@ import icon_cs from "@/public/icons/support_agent.svg";
 import icon_alamat from "@/public/icons/apartment.svg";
 import styles from "./styles/Contact.module.css";
 import Image from "next/image";
+import Map from "./Map";
 
 const ICON_HEIGHT = 200;
 
@@ -19,7 +20,7 @@ export default function Contact() {
         <h1 className="text-white-1">Hubungi Kami</h1>
       </StaticJumbotron>
       <div className="w-full py-16 bg-secondary-1-light flex justify-center">
-        <div className="lockup px-10 xl:px-0 inline-grid grid-cols-3 gap-8">
+        <div className="lockup inline-grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-8">
           <div className={styles.contact_container}>
             <Image
               src={icon_alamat}
@@ -61,7 +62,9 @@ export default function Contact() {
             <p className={styles.contact_content}>construction@gmail.com</p>
           </div>
         </div>
-        <div></div>
+      </div>
+      <div className="w-full bg-secondary-1-light flex">
+        <Map />
       </div>
     </main>
   );

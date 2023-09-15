@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 import logo from "@/public/logo-footer.png";
 
-type Props = {};
+type PropType = {};
 
 const LOGO_WIDTH = 257;
 const LOGO_HEIGHT = 175;
 
-const Footer: React.FC<Props> = (props) => {
+const Footer: React.FC<PropType> = (props) => {
   const submitEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };

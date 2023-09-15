@@ -5,11 +5,11 @@ import { PortofolioItem } from "./page";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
+type PropType = {
   portofolio: PortofolioItem;
 };
 
-const CardPortofolio = (props: Props) => {
+const CardPortofolio = (props: PropType) => {
   const { id, name, highlightImg } = props.portofolio;
   return (
     <Link href={`/portofolio/${id}`} id={id} className={styles.card_portofolio}>
