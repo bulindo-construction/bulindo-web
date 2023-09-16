@@ -4,6 +4,7 @@ import React from "react";
 import { LayananItem } from "../page";
 import { Layanan } from "@/app/model/database";
 import Image from "next/image";
+import { AutoplayOptionsType } from "embla-carousel-autoplay";
 
 // TODO DELETE WHEN BE READY
 const mockup = "/../public/mockup/mockup-layanan.png";
@@ -61,10 +62,13 @@ async function getOtherLayanan() {
   return data;
 }
 
-const SLIDE_COUNT = 3;
+const SLIDE_COUNT = 5;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 const OPTIONS: EmblaOptionsType = { loop: true };
+const CAROUSEL_AUTOPLAY_OPTIONS: AutoplayOptionsType = {
+  active: false,
+};
 
 const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
   // TODO DELETE WHEN BE READY
@@ -76,7 +80,15 @@ const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
 
   return (
     <main>
-      <Jumbotron slides={SLIDES} options={OPTIONS} withButton withPreview />
+      <Jumbotron
+        slides={SLIDES}
+        options={OPTIONS}
+        autoplayOptions={CAROUSEL_AUTOPLAY_OPTIONS}
+        height={"h-[50vh] lg:h-[80vh]"}
+        withButton
+        withPreview
+        withNavPadding
+      />
       <div className="w-full py-16 bg-primary-1-light">
         <div className="lockup px-10 grid grid-cols-[8fr_2fr] gap-8">
           <section className="flex flex-col text-dark-1">

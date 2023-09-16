@@ -34,6 +34,7 @@ export default function Home() {
       <Jumbotron
         slides={SLIDES}
         options={OPTIONS}
+        height={"h-[60vh]"}
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
         withNavigate
       />

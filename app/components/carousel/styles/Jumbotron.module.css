@@ -1,14 +1,15 @@
 .jumbotron {
   --slide-spacing: 0;
   --slide-size: 100%;
-  --slide-height: 60vh;
   position: relative;
 }
 .jumbotron__viewport {
   overflow: hidden;
+  height: 100%;
   z-index: 0;
 }
 .jumbotron__container {
+  height: 100%;
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y;
@@ -22,7 +23,7 @@
 }
 .jumbotron__slide__img {
   display: block;
-  height: var(--slide-height);
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -100,4 +101,56 @@
 }
 .jumbotron__dot__selected:after {
   background: linear-gradient(45deg, var(--secondary-1), var(--secondary-2));
+}
+
+.jumbotron__thumbs {
+  --thumbs-slide-spacing: 0.8rem;
+  --thumbs-slide-height: 5rem;
+  --thumbs-border-radius: 0.7rem;
+  background-color: rgba(var(--val--dark-1), 0.7);
+  padding: 1rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+}
+.jumbotron__thumbs__viewport {
+  overflow: hidden;
+}
+.jumbotron__thumbs__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--thumbs-slide-spacing);
+}
+.jumbotron__thumbs__slide {
+  min-width: 10rem;
+  max-width: 10rem;
+  position: relative;
+}
+
+.jumbotron__thumbs__slide__button {
+  background-color: transparent;
+  touch-action: manipulation;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--thumbs-border-radius);
+  width: 100%;
+  opacity: 0.5;
+  border: 4px solid transparent;
+  overflow: hidden;
+
+  transition: border 0.2s;
+  transition: opacity 0.2s;
+}
+.jumbotron__thumbs__slide__selected .jumbotron__thumbs__slide__button {
+  border-color: var(--secondary-1);
+  opacity: 1;
+}
+.jumbotron__thumbs__slide__img {
+  display: block;
+  height: var(--thumbs-slide-height);
+  width: 100%;
+  object-fit: cover;
 }

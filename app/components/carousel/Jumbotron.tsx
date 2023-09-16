@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles/Jumbotron.module.css";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaCarouselType,
@@ -17,15 +17,18 @@ import {
   usePrevNextButtons,
 } from "./CarouselArrowButtons";
 import classNames from "classnames/bind";
+import { Thumb } from "./JumbotronThumb";
 
 type PropType = {
   slides: number[];
+  height: string;
   options?: EmblaOptionsType;
   autoplayOptions?: AutoplayOptionsType;
   withNavigate?: boolean;
   withButton?: boolean;
   withDots?: boolean;
   withPreview?: boolean;
+  withNavPadding?: boolean;
 };
 
 var cx = classNames.bind(styles);
@@ -34,12 +37,15 @@ const Jumbotron: React.FC<PropType> = (props) => {
   const {
     slides,
     options,
+    height,
     autoplayOptions,
     withNavigate,
     withButton,
     withDots,
     withPreview,
+    withNavPadding,
   } = props;
+
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay(autoplayOptions),
   ]);
@@ -55,6 +61,19 @@ const Jumbotron: React.FC<PropType> = (props) => {
     onButtonClick
   );
 
+  const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
+    containScroll: "trimSnaps",
+    align: "center",
+    dragFree: true,
+  });
+  const onThumbClick = useCallback(
+    (index: number) => {
+      if (!emblaApi || !emblaThumbsApi) return;
+      emblaApi.scrollTo(index);
+    },
+    [emblaApi, emblaThumbsApi]
+  );
+
   const {
     prevBtnDisabled,
     nextBtnDisabled,
@@ -62,8 +81,17 @@ const Jumbotron: React.FC<PropType> = (props) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
+  var navElement = document.getElementById("nav");
+  var navHeight = navElement?.offsetHeight;
+  var paddingTop = useMemo(() => {
+    return !!navHeight && withNavPadding ? navHeight : 0;
+  }, [navHeight, withNavPadding]);
+
   return (
-    <section className={styles.jumbotron}>
+    <section
+      className={cx(styles.jumbotron, height)}
+      style={{ marginTop: paddingTop + "px" }}
+    >
       {!withNavigate ? (
         <></>
       ) : (
@@ -113,6 +141,28 @@ const Jumbotron: React.FC<PropType> = (props) => {
               })}
             />
           ))}
+        </div>
+      )}
+      {!withPreview ? (
+        <></>
+      ) : (
+        <div className={styles.jumbotron__thumbs}>
+          <div
+            className={styles.jumbotron__thumbs__viewport}
+            ref={emblaThumbsRef}
+          >
+            <div className={styles.jumbotron__thumbs__container}>
+              {slides.map((index) => (
+                <Thumb
+                  onClick={() => onThumbClick(index)}
+                  selected={index === selectedIndex}
+                  index={index}
+                  imgSrc={imageByIndex(index)}
+                  key={index}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </section>

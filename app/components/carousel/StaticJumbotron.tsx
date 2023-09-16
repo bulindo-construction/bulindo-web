@@ -15,7 +15,7 @@ const StaticJumbotron: React.FC<PropsWithChildren<PropType>> = (props) => {
   const { imgSource, isDark, className, children } = props;
 
   return (
-    <div className={cx(styles.static_jumbotron, className)}>
+    <section className={cx(styles.static_jumbotron, className)}>
       <Image
         className={styles.static_jumbotron__img}
         src={imgSource}
@@ -31,7 +31,7 @@ const StaticJumbotron: React.FC<PropsWithChildren<PropType>> = (props) => {
       >
         {children}
       </div>
-    </div>
+    </section>
   );
 };
 
