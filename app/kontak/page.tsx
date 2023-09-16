@@ -14,12 +14,14 @@ export default function Contact() {
     <main className="flex flex-col items-center z-0">
       <StaticJumbotron
         imgSource={contactHighlight}
-        className={"h-[30vh]"}
+        className={"h-[35vh]"}
         isDark
       >
-        <h1 className="text-white-1">Hubungi Kami</h1>
+        <header>
+          <h1 className="text-white-1">Hubungi Kami</h1>
+        </header>
       </StaticJumbotron>
-      <div className="w-full py-16 bg-secondary-1-light flex justify-center">
+      <section className="w-full py-16 bg-secondary-1-light flex justify-center">
         <div className="lockup inline-grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-8">
           <div className={styles.contact_container}>
             <Image
@@ -62,10 +64,10 @@ export default function Contact() {
             <p className={styles.contact_content}>construction@gmail.com</p>
           </div>
         </div>
-      </div>
-      <div className="w-full bg-secondary-1-light flex">
+      </section>
+      <section className="w-full bg-secondary-1-light flex">
         <Map />
-      </div>
+      </section>
     </main>
   );
 }

@@ -5,10 +5,12 @@ export default function Profil() {
   return (
     <main className="flex flex-col items-center z-0">
       <StaticJumbotron imgSource={profilHighlight} className={"h-[45vh]"}>
-        <h1 className="">Profil Perusahaan</h1>
+        <header>
+          <h1 className="">Profil Perusahaan</h1>
+        </header>
       </StaticJumbotron>
-      <div className="w-full py-16 bg-secondary-1-light">
-        <div className="lockup px-10 xl:px-0 text-justify">
+      <section className="w-full py-16 bg-secondary-1-light">
+        <article className="lockup px-10 xl:px-0 text-justify">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue
           lacus viverra vitae congue eu. Facilisis magna etiam tempor orci eu
@@ -54,8 +56,8 @@ export default function Profil() {
           Ullamcorper malesuada proin libero nunc consequat interdum varius.
           Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Id
           volutpat lacus laoreet non
-        </div>
-      </div>
+        </article>
+      </section>
     </main>
   );
 }

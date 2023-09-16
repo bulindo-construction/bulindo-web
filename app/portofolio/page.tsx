@@ -21,13 +21,15 @@ export default function Portofolio() {
   return (
     <main className="flex flex-col items-center z-0 bg-primary-1-light">
       <StaticJumbotron imgSource={portoHighlight} className={"h-[35vh]"}>
-        <h1 className="">Portofolio</h1>
+        <header>
+          <h1 className="">Portofolio</h1>
+        </header>
       </StaticJumbotron>
-      <div className="lockup flex flex-wrap justify-center gap-6 py-12 px-8 xl:px-0 ">
+      <section className="lockup flex flex-wrap justify-center gap-6 py-12 px-8 xl:px-0 ">
         {listPortofolio.map((item, index) => (
           <CardPortofolio key={index} portofolio={item} />
         ))}
-      </div>
+      </section>
     </main>
   );
 }

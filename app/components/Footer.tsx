@@ -17,7 +17,7 @@ const Footer: React.FC<PropType> = (props) => {
   return (
     <footer className="bg-white-1 border-t-primary-1 border-t-8">
       <div className="flex flex-wrap lockup px-6 xl:px-0 pt-12 pb-8 gap-8 justify-between sm:justify-around">
-        <div className="flex flex-col w-full md:w-2/5 xl:w-1/5 gap-4 items-center sm:items-start">
+        <section className="flex flex-col w-full md:w-2/5 xl:w-1/5 gap-4 items-center sm:items-start">
           <Image
             width={LOGO_WIDTH}
             height={LOGO_HEIGHT}
@@ -33,8 +33,8 @@ const Footer: React.FC<PropType> = (props) => {
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-        </div>
-        <div className="flex flex-col gap-2">
+        </section>
+        <section className="flex flex-col gap-2">
           <h3 className="text-xl font-bold text-primary-1">Info kontak</h3>
           <p>Kantor operasional - Bandung</p>
           <p>
@@ -45,8 +45,8 @@ const Footer: React.FC<PropType> = (props) => {
             Fax - (+62) 888 0800 8080 <br />
             Email - construction@gmail.com
           </p>
-        </div>
-        <div className="flex flex-col flex-grow max-w-xl min-w-fit lg:flex-grow-0 w-1/3 gap-4 items-stretch">
+        </section>
+        <section className="flex flex-col flex-grow max-w-xl min-w-fit lg:flex-grow-0 w-1/3 gap-4 items-stretch">
           <h3 className="text-xl font-bold text-primary-1">Hubungi kami</h3>
           <form
             className="flex flex-col flex-grow gap-4 focus:border"
@@ -69,14 +69,14 @@ const Footer: React.FC<PropType> = (props) => {
               value="KIRIM"
             ></input>
           </form>
-        </div>
+        </section>
       </div>
-      <div className="bg-dark-1 text-white-1 py-2 px-8">
+      <section className="bg-dark-1 text-white-1 py-2 px-8">
         <small>
           Copyright &copy; {new Date().getFullYear()} Bulindo. All Rights
           Reserved
         </small>
-      </div>
+      </section>
     </footer>
   );
 };

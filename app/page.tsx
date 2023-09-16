@@ -36,14 +36,16 @@ export default function Home() {
         options={OPTIONS}
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
       />
-      <div className="w-full pt-16 xl:py-16 bg-secondary-1-light">
+      <section className="w-full pt-16 xl:py-16 bg-secondary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
           autoplayOptions={CAROUSEL_AUTOPLAY_OPTIONS}
           textBgClassName="bg-gradient-1"
         >
-          <h2 className="text-3xl font-light">Layanan</h2>
+          <header>
+            <h2 className="text-3xl font-light">Layanan</h2>
+          </header>
           <p className="mb-12 text-md text-center">
             Dengan spesialiasi pada desain dan pembangunan, kami menyediakan
             layanan yang sesuai dengan kebutuhan Anda
@@ -55,8 +57,8 @@ export default function Home() {
             TELUSURI
           </BorderedTransparentButton>
         </Carousel>
-      </div>
-      <div className="w-full pt-16 xl:py-16 bg-primary-1-light">
+      </section>
+      <section className="w-full pt-16 xl:py-16 bg-primary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
@@ -64,7 +66,9 @@ export default function Home() {
           textBgClassName={"bg-gradient-2"}
           flip
         >
-          <h2 className="text-3xl font-light">Portofolio</h2>
+          <header>
+            <h2 className="text-3xl font-light">Portofolio</h2>
+          </header>
           <p className="mb-12 text-md text-center">
             Mulai dari rumah sampai perusahaan multinasional, kami memiliki
             pengalaman dengan klien-klien yang bervariasi
@@ -76,14 +80,14 @@ export default function Home() {
             TELUSURI
           </BorderedTransparentButton>
         </Carousel>
-      </div>
-      <div className="pt-16 pb-28">
+      </section>
+      <section className="pt-16 pb-28">
         <LogoCarousel
           slides={LOGOS}
           options={LOGOCAROUSEL_OPTIONS}
           autoplayOptions={LOGOCAROUSEL_AUTOPLAY_OPTIONS}
         />
-      </div>
+      </section>
     </main>
   );
 }

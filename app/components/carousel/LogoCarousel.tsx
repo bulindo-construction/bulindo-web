@@ -46,7 +46,9 @@ const LogoCarousel: React.FC<PropType> = (props) => {
 
   return (
     <div className="lockup flex flex-col justify-center text-center">
-      <h2 className="text-4xl mb-10 text-dark-1">Pelanggan Kami</h2>
+      <header>
+        <h2 className="text-4xl mb-10 text-dark-1">Pelanggan Kami</h2>
+      </header>
       <div className={cx({ logocarousel: true, lockup: true })}>
         <div className={styles.logocarousel__buttons}>
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
