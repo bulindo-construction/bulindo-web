@@ -22,6 +22,7 @@ type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
   autoplayOptions?: AutoplayOptionsType;
+  withNavigate?: boolean;
   withButton?: boolean;
   withDots?: boolean;
   withPreview?: boolean;
@@ -30,7 +31,15 @@ type PropType = {
 var cx = classNames.bind(styles);
 
 const Jumbotron: React.FC<PropType> = (props) => {
-  const { slides, options, autoplayOptions, withButton, withDots } = props;
+  const {
+    slides,
+    options,
+    autoplayOptions,
+    withNavigate,
+    withButton,
+    withDots,
+    withPreview,
+  } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay(autoplayOptions),
   ]);
@@ -54,13 +63,17 @@ const Jumbotron: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
   return (
-    <div className={styles.jumbotron}>
-      <BorderedButton
-        href="/profil"
-        className="absolute top-1/2 left-[10%] z-10 tracking-wider border-white-1"
-      >
-        TELUSURI
-      </BorderedButton>
+    <section className={styles.jumbotron}>
+      {!withNavigate ? (
+        <></>
+      ) : (
+        <BorderedButton
+          href="/profil"
+          className="absolute top-1/2 left-[10%] z-10 tracking-wider border-white-1"
+        >
+          TELUSURI
+        </BorderedButton>
+      )}
       <div className={styles.jumbotron__viewport} ref={emblaRef}>
         <div className={styles.jumbotron__container}>
           {slides.map((index) => (
@@ -102,7 +115,7 @@ const Jumbotron: React.FC<PropType> = (props) => {
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

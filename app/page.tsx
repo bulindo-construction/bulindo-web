@@ -24,8 +24,8 @@ const LOGOCAROUSEL_OPTIONS: EmblaOptionsType = {
   dragFree: true,
 };
 const SLIDE_COUNT = 3;
-const LOGOS_COUNT = 7;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+const LOGOS_COUNT = 7;
 const LOGOS = Array.from(Array(LOGOS_COUNT).keys());
 
 export default function Home() {
@@ -35,6 +35,7 @@ export default function Home() {
         slides={SLIDES}
         options={OPTIONS}
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
+        withNavigate
       />
       <section className="w-full pt-16 xl:py-16 bg-secondary-1-light">
         <Carousel
