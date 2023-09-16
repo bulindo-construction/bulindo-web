@@ -1,23 +1,22 @@
 import { Jumbotron } from "@/app/components/carousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import React from "react";
-import { LayananItem } from "../page";
-import { Layanan } from "@/app/model/database";
+import { PortofolioItem } from "../page";
+import { Portofolio } from "@/app/model/database";
 import Image from "next/image";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
 import Link from "next/link";
 
 // TODO DELETE WHEN BE READY
-const mockup = "/../public/mockup/mockup-layanan.png";
-const other_layanan: LayananItem[] = [
-  { id: "1", name: "Jasa 1", category: "Cat1", highlightImg: mockup },
-  { id: "2", name: "Jasa 2", category: "Cat2", highlightImg: mockup },
-  { id: "3", name: "Jasa 3", category: "Cat3", highlightImg: mockup },
+const mockup = "/../public/mockup/mockup-portofolio.png";
+const other_portofolio: PortofolioItem[] = [
+  { id: "1", name: "Portofolio 1", highlightImg: mockup },
+  { id: "2", name: "Portofolio 2", highlightImg: mockup },
+  { id: "3", name: "Portofolio 3", highlightImg: mockup },
 ];
-const mock_data: Layanan = {
+const mock_data: Portofolio = {
   id: "10",
-  name: "Jasa 10",
-  category: "Cat10",
+  name: "Portofolio 10",
   highlightImg: mockup,
   description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue
@@ -45,18 +44,18 @@ type PropType = {
   id: string;
 };
 
-async function getLayanan(noteId: string) {
+async function getPortofolio(noteId: string) {
   const res = await fetch(
-    `http://localhost:3000/api/collections/layanan/records/${noteId}`,
+    `http://localhost:3000/api/collections/portofolio/records/${noteId}`,
     { next: { revalidate: 60 } }
   );
   const data = res.json();
   return data;
 }
 
-async function getOtherLayanan() {
+async function getOtherPortofolio() {
   const res = await fetch(
-    `http://localhost:3000/api/collections/layanan/records`,
+    `http://localhost:3000/api/collections/portofolio/records`,
     { next: { revalidate: 60 } }
   );
   const data = res.json();
@@ -74,7 +73,7 @@ const CAROUSEL_AUTOPLAY_OPTIONS: AutoplayOptionsType = {
 const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
   // TODO DELETE WHEN BE READY
   var data = mock_data;
-  var otherData = other_layanan;
+  var otherData = other_portofolio;
 
   // var data = getLayanan(id);
   // var otherData = getOtherLayanan();
@@ -94,10 +93,10 @@ const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
         <div className="lockup px-10 grid grid-cols-[8fr_2fr] gap-8">
           <section className="flex flex-col text-dark-1">
             <header>
-              <h1 className="text-dark-1 mb-2">{data.name}</h1>
+              <h1 className="text-dark-1 mb-8">{data.name}</h1>
             </header>
-            <h3 className="text-lg mb-8">
-              <b>{data.category}</b>
+            <h3 className="text-lg mb-2">
+              <b>Deskripsi Portofolio</b>
             </h3>
             <article>
               <p className="text-justify">{data.description}</p>
@@ -105,25 +104,24 @@ const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
           </section>
           <aside className="flex flex-col gap-5 pl-6 border-l-2 border-l-dark-1 text-dark-1">
             <header>
-              <h3 className="text-xl">Layanan lainnya</h3>
+              <h3 className="text-xl">Projek lainnya</h3>
             </header>
-            {otherData.map((layanan) => (
+            {otherData.map((portofolio) => (
               <Link
-                href={`/layanan/${layanan.id}`}
-                key={layanan.id}
+                href={`/portofolio/${portofolio.id}`}
+                key={portofolio.id}
                 className="flex flex-col"
               >
                 <Image
                   alt=""
-                  src={layanan.highlightImg}
+                  src={portofolio.highlightImg}
                   className="mb-2 border-2 border-dark-1"
                   width={360}
                   height={240}
                 />
                 <h5>
-                  <b>{layanan.name}</b>
+                  <b>{portofolio.name}</b>
                 </h5>
-                <h6 className="text-sm">{layanan.category}</h6>
               </Link>
             ))}
           </aside>
