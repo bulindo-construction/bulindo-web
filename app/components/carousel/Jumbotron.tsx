@@ -81,11 +81,13 @@ const Jumbotron: React.FC<PropType> = (props) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi, onButtonClick);
 
-  var navElement = document.getElementById("nav");
-  var navHeight = navElement?.offsetHeight;
   var paddingTop = useMemo(() => {
+    if (typeof document === "undefined") return 0;
+    var navElement = document.getElementById("nav");
+    var navHeight = navElement?.offsetHeight;
+
     return !!navHeight && withNavPadding ? navHeight : 0;
-  }, [navHeight, withNavPadding]);
+  }, [withNavPadding]);
 
   return (
     <section

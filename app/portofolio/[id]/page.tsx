@@ -40,10 +40,6 @@ const mock_data: Portofolio = {
   images: [],
 };
 
-type PropType = {
-  id: string;
-};
-
 async function getPortofolio(noteId: string) {
   const res = await fetch(
     `http://localhost:3000/api/collections/portofolio/records/${noteId}`,
@@ -70,12 +66,13 @@ const CAROUSEL_AUTOPLAY_OPTIONS: AutoplayOptionsType = {
   active: false,
 };
 
-const LayananPage: React.FC<PropType> = ({ id }: PropType) => {
+const LayananPage: React.FC = () => {
   // TODO DELETE WHEN BE READY
   var data = mock_data;
   var otherData = other_portofolio;
 
-  // var data = getLayanan(id);
+  // const router = useRouter();
+  // var data = getLayanan(router.query.id);
   // var otherData = getOtherLayanan();
 
   return (
