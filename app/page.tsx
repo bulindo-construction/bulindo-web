@@ -38,7 +38,7 @@ export default function Home() {
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
         withNavigate
       />
-      <section className="w-full pt-16 xl:py-16 bg-secondary-1-light">
+      <section className="w-full pt-16 md:py-16 bg-primary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
@@ -60,7 +60,7 @@ export default function Home() {
           </BorderedTransparentButton>
         </Carousel>
       </section>
-      <section className="w-full pt-16 xl:py-16 bg-primary-1-light">
+      <section className="w-full pt-16 md:py-16 bg-secondary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
