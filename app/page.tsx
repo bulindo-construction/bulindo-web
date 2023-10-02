@@ -83,7 +83,7 @@ export default function Home() {
           </BorderedTransparentButton>
         </Carousel>
       </section>
-      <section className="pt-16 pb-28">
+      <section className="py-16">
         <LogoCarousel
           slides={LOGOS}
           options={LOGOCAROUSEL_OPTIONS}
