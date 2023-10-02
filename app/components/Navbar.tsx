@@ -74,14 +74,14 @@ const Navbar = () => {
         className="flex items-center justify-center text-center md:hidden z-50 w-9 h-9 text-xl text-white-1 bg-logo"
         onClick={() => toggleSidebar(!isSidebarOpen)}
       >
-        {isSidebarOpen ? "=" : "x"}
+        {!isSidebarOpen ? "=" : "x"}
       </button>
       <div
         className={classNames(
           {
             nav__sidebar: true,
-            "-right-1/2": isSidebarOpen,
-            "right-0": !isSidebarOpen,
+            "right-0": isSidebarOpen,
+            "-right-full": !isSidebarOpen,
           },
           "md:hidden fixed z-40 top-0 pt-20 px-8 bg-white-1 h-screen flex flex-col items-end gap-4 transition-position duration-500 ease-in-out"
         )}

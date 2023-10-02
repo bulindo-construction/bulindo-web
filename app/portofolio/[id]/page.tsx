@@ -86,11 +86,11 @@ const LayananPage: React.FC = () => {
         withPreview
         withNavPadding
       />
-      <div className="w-full py-16 bg-primary-1-light">
-        <div className="lockup px-10 grid grid-cols-[8fr_2fr] gap-8">
+      <div className="w-full md:py-16 py-10 bg-primary-1-light">
+        <div className="lockup px-10 md:grid lg:grid-cols-[8fr_2fr] md:grid-cols-[7fr_3fr] flex flex-col gap-8">
           <section className="flex flex-col text-dark-1">
             <header>
-              <h1 className="text-dark-1 mb-8">{data.name}</h1>
+              <h1 className="text-dark-1 mb-4">{data.name}</h1>
             </header>
             <h3 className="text-lg mb-2">
               <b>Deskripsi Portofolio</b>
@@ -99,7 +99,7 @@ const LayananPage: React.FC = () => {
               <p className="text-justify">{data.description}</p>
             </article>
           </section>
-          <aside className="flex flex-col gap-5 pl-6 border-l-2 border-l-dark-1 text-dark-1">
+          <aside className="flex flex-col gap-5 md:pl-6 md:pt-0 md:mt-0 pl-0 pt-6 mt-2 md:border-l-2 md:border-l-dark-1 md:border-t-0 border-t-2 border-t-dark-1 text-dark-1">
             <header>
               <h3 className="text-xl">Projek lainnya</h3>
             </header>
