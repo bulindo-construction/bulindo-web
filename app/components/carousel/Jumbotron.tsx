@@ -99,7 +99,7 @@ const Jumbotron: React.FC<PropType> = (props) => {
       ) : (
         <BorderedButton
           href="/profil"
-          className="absolute top-1/2 left-[10%] z-10 tracking-wider border-white-1"
+          className="absolute sm:top-1/2 sm:left-[10%] sm:translate-x-0 top-[85%] left-1/2 -translate-x-1/2  z-10 tracking-wider border-white-1"
         >
           TELUSURI
         </BorderedButton>

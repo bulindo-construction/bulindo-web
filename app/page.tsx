@@ -34,11 +34,11 @@ export default function Home() {
       <Jumbotron
         slides={SLIDES}
         options={OPTIONS}
-        height={"h-[60vh]"}
+        height={"h-[45vh] lg:h-[60vh]"}
         autoplayOptions={JUMBOTRON_AUTOPLAY_OPTIONS}
         withNavigate
       />
-      <section className="w-full pt-16 md:py-16 bg-primary-1-light">
+      <section className="w-full pt-16 lg:py-16 bg-primary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
@@ -48,7 +48,7 @@ export default function Home() {
           <header>
             <h2 className="text-3xl font-light">Layanan</h2>
           </header>
-          <p className="mb-12 text-md text-center">
+          <p className="mb-0 lg:mb-12 text-md text-center">
             Dengan spesialiasi pada desain dan pembangunan, kami menyediakan
             layanan yang sesuai dengan kebutuhan Anda
           </p>
@@ -60,7 +60,7 @@ export default function Home() {
           </BorderedTransparentButton>
         </Carousel>
       </section>
-      <section className="w-full pt-16 md:py-16 bg-secondary-1-light">
+      <section className="w-full pt-16 lg:py-16 bg-secondary-1-light">
         <Carousel
           slides={SLIDES}
           options={CAROUSEL_OPTIONS}
@@ -71,7 +71,7 @@ export default function Home() {
           <header>
             <h2 className="text-3xl font-light">Portofolio</h2>
           </header>
-          <p className="mb-12 text-md text-center">
+          <p className="mb-0 lg:mb-12 text-md text-center">
             Mulai dari rumah sampai perusahaan multinasional, kami memiliki
             pengalaman dengan klien-klien yang bervariasi
           </p>
@@ -83,7 +83,7 @@ export default function Home() {
           </BorderedTransparentButton>
         </Carousel>
       </section>
-      <section className="py-16">
+      <section className="pt-16 pb-16 lg:pb-28">
         <LogoCarousel
           slides={LOGOS}
           options={LOGOCAROUSEL_OPTIONS}
