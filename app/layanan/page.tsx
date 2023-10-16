@@ -2,8 +2,9 @@ import { StaticJumbotron } from "@/app/components/carousel";
 import layananHighlight from "@/public/jumbotron/Jumbo-2.png";
 import { Layanan } from "@/app/model/database";
 import CardLayanan from "./CardLayanan";
+import { GetStaticProps } from "next";
 
-// TODO DELETE WHEN BE READY
+// TODO DELETE WHEN BACKEND READY
 const mockup = "/../public/mockup/mockup-layanan.png";
 const listLayanan: LayananItem[] = [
   { id: "1", name: "Jasa 1", category: "Cat1", highlightImg: mockup },
@@ -13,9 +14,30 @@ const listLayanan: LayananItem[] = [
   { id: "5", name: "Jasa 5", category: "Cat5", highlightImg: mockup },
 ];
 
-export type LayananItem = Omit<Layanan, "description">;
+export type LayananItem = Omit<Layanan, "description" | "images">;
+type PropTypes = {
+  services: LayananItem[];
+};
 
-export default function Layanan() {
+export const getStaticProps = (async () => {
+  // TODO
+  // const res = await fetch("https://.../portofolios");
+  // let portofolios = await res.json();
+  let services = listLayanan;
+
+  return { props: { services } };
+}) satisfies GetStaticProps<PropTypes>;
+
+const Layanan: React.FC<PropTypes> = ({ services }) => {
+  const serviceCards =
+    process.env.NODE_ENV === "development"
+      ? listLayanan.map((item, index) => (
+          <CardLayanan key={index} layanan={item} />
+        ))
+      : services &&
+        services.map((item, index) => (
+          <CardLayanan key={index} layanan={item} />
+        ));
 
   return (
     <main className="flex flex-col items-center z-0 bg-primary-1-light">
@@ -25,10 +47,10 @@ export default function Layanan() {
         </header>
       </StaticJumbotron>
       <section className="lockup flex flex-wrap justify-center gap-8 py-12 px-8 xl:px-0">
-        {listLayanan.map((item, index) => (
-          <CardLayanan key={index} layanan={item} />
-        ))}
+        {serviceCards}
       </section>
     </main>
   );
-}
+};
+
+export default Layanan;
