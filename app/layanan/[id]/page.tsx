@@ -2,7 +2,6 @@ import { Jumbotron } from "@/app/components/carousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import React from "react";
 import { LayananItem } from "../page";
-import { Layanan } from "@/app/model/database";
 import Image from "next/image";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
 import Link from "next/link";
@@ -10,16 +9,16 @@ import Link from "next/link";
 // TODO DELETE WHEN BE READY
 const mockup = "/../public/mockup/mockup-layanan.png";
 const other_layanan: LayananItem[] = [
-  { id: "1", name: "Jasa 1", category: "Cat1", highlightImg: mockup },
-  { id: "2", name: "Jasa 2", category: "Cat2", highlightImg: mockup },
-  { id: "3", name: "Jasa 3", category: "Cat3", highlightImg: mockup },
+  { id: "1", name: "Jasa 1", category: "Cat1", thumbnail: mockup },
+  { id: "2", name: "Jasa 2", category: "Cat2", thumbnail: mockup },
+  { id: "3", name: "Jasa 3", category: "Cat3", thumbnail: mockup },
 ];
 const mock_data: Layanan = {
   id: "10",
   name: "Jasa 10",
   category: "Cat10",
-  highlightImg: mockup,
-  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
+  thumbnail: mockup,
+  content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue
           lacus viverra vitae congue eu. Facilisis magna etiam tempor orci eu
           lobortis elementum nibh tellus. Metus dictum at tempor commodo
@@ -40,8 +39,6 @@ const mock_data: Layanan = {
           enim blandit volutpat maecenas volutpat. Diam maecenas sed enim ut`,
   images: [],
 };
-
-
 
 async function getLayanan(noteId: string) {
   const res = await fetch(
@@ -99,7 +96,7 @@ const LayananPage: React.FC = () => {
               <b>{data.category}</b>
             </h3>
             <article>
-              <p className="text-justify">{data.description}</p>
+              <p className="text-justify">{data.content}</p>
             </article>
           </section>
           <aside className="flex flex-col gap-5 md:pl-6 md:pt-0 md:mt-0 pl-0 pt-6 mt-2 md:border-l-2 md:border-l-dark-1 md:border-t-0 border-t-2 border-t-dark-1 text-dark-1">
@@ -114,7 +111,7 @@ const LayananPage: React.FC = () => {
               >
                 <Image
                   alt=""
-                  src={layanan.highlightImg}
+                  src={layanan.thumbnail}
                   className="mb-2 border-2 border-dark-1"
                   width={360}
                   height={240}

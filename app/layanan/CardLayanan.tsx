@@ -10,13 +10,13 @@ type PropType = {
 };
 
 const CardLayanan = (props: PropType) => {
-  const { id, name, highlightImg } = props.layanan;
+  const { id, name, thumbnail } = props.layanan;
   return (
     <Link href={`/layanan/${id}`} id={id} className={styles.card_layanan}>
       <div className={styles.card_layanan__container}>
         <Image
           alt={name}
-          src={highlightImg}
+          src={thumbnail}
           className={styles.card_layanan__highlight}
           width={800}
           height={600}

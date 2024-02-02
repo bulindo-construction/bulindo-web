@@ -1,0 +1,2 @@
+export const layananTable = `https://docs.google.com/spreadsheets/d/e/${process.env.NEXT_PUBLIC_GOOGLE_SHEETS_KEY}/pub?gid=${process.env.NEXT_PUBLIC_SHEETS_LAYANAN_TABLE}&single=true&output=csv`
+export const portofolioTable = `https://docs.google.com/spreadsheets/d/e/${process.env.NEXT_PUBLIC_GOOGLE_SHEETS_KEY}/pub?gid=${process.env.NEXT_PUBLIC_SHEETS_PORTOFOLIO_TABLE}&single=true&output=csv`

@@ -2,7 +2,7 @@ import { Jumbotron } from "@/app/components/carousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import React from "react";
 import { PortofolioItem } from "../page";
-import { Portofolio } from "@/app/model/database";
+import { Portofolio } from "@/app/model/portofolio";
 import Image from "next/image";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
 import Link from "next/link";
