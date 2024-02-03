@@ -30,17 +30,17 @@ const Layanan: React.FC<PropTypes> = ({ services }) => {
   const { getAllLayanan } = layananApi();
   const [layananData, setLayananData] = useState<AllLayananResponse>([]);
 
-  useEffect(() => {
-    getAllLayanan(setLayananData);
-  }, []);
+  const fetchLayanan = async () => {
+    getAllLayanan()
+      .then((res) => {
+        if (res != null) setLayananData(res);
+      })
+      .catch((error) => console.log("Get All Layanan error", error));
+  };
 
-  const serviceCards: ReactNode = useMemo(() => {
-    if (layananData.length == 0) return <></>;
-    return layananData.map((item, index) => {
-      item.thumbnail = mockup; // TODO DELETE WHEN BACKEND READY
-      return <CardLayanan key={index} layanan={item} />;
-    });
-  }, [layananData]);
+  useEffect(() => {
+    fetchLayanan();
+  }, []);
 
   return (
     <main className="flex flex-col items-center z-0 bg-primary-1-light">
@@ -50,7 +50,10 @@ const Layanan: React.FC<PropTypes> = ({ services }) => {
         </header>
       </StaticJumbotron>
       <section className="lockup flex flex-wrap justify-center gap-8 py-12 px-8 xl:px-0">
-        {serviceCards}
+        {layananData.map((item, index) => {
+          item.thumbnail = mockup; // TODO DELETE WHEN BACKEND READY
+          return <CardLayanan key={index} layanan={item} />;
+        })}
       </section>
     </main>
   );
