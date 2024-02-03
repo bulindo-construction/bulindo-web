@@ -9,7 +9,7 @@ type DLayanan = {
 
 type Layanan = {
   id: string;
-  name: string;
+  title: string;
   category: string;
   content: string;
   images: string[];
