@@ -4,13 +4,13 @@ import { cache } from "react";
 import Image from "next/image";
 import { AutoplayOptionsType } from "embla-carousel-autoplay";
 import Link from "next/link";
-import layananApi from "@/app/database/sheets/layanan";
+import LayananApi from "@/app/database/sheets/layanan";
 
 // TODO DELETE WHEN BE READY
 const mockup = "/../public/mockup/mockup-layanan.png";
 
 export const getLayanan = cache(async (layananId: string) => {
-  const { getLayananById } = layananApi();
+  const { getLayananById } = LayananApi();
   const res = getLayananById(layananId);
   return res;
 });

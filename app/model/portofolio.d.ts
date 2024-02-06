@@ -1,7 +1,15 @@
+export type DPortofolio = {
+  id: string;
+  title: string;
+  description: string;
+  folder: string;
+  thumbnail: string;
+}
+
 export type Portofolio = {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  highlightImg: string;
-  images?: string[]
+  images: string[];
+  thumbnail: string;
 }

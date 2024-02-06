@@ -5,10 +5,10 @@ export type AllLayananItem = Omit<DLayanan, "content" | "folder">
 export type AllLayananResponse = AllLayananItem[]
 export type LayananResponse = Layanan & { others: AllLayananItem[] } | null;
 
-function transformLayananData(raw: DLayanan[]): DLayanan[] {
+function transformManyLayananData(raw: DLayanan[]): DLayanan[] {
   var processedData: DLayanan[] = [];
   raw.forEach((data: DLayanan) => {
-    let transformedData = transformSingleLayananData(data)
+    let transformedData = transformLayananData(data)
     if (transformedData != null) {
       processedData.push(transformedData);
     }
@@ -16,7 +16,7 @@ function transformLayananData(raw: DLayanan[]): DLayanan[] {
   return processedData;
 }
 
-function transformSingleLayananData(raw: DLayanan): DLayanan | null {
+function transformLayananData(raw: DLayanan): DLayanan | null {
   let transformedData = {
     id: raw.id,
     title: raw.title,
@@ -34,25 +34,30 @@ function transformSingleLayananData(raw: DLayanan): DLayanan | null {
 }
 
 const parseLayananTable = (callbackFn: Function) => {
-  return parseTable(layananTable, transformLayananData, callbackFn);
+  return parseTable(layananTable, transformManyLayananData, callbackFn);
 }
 
 const fetchLayananStream = async (stepCallbackFn: Function) => {
   return fetchDataStream(layananTable, stepCallbackFn);
 }
 
-const layananApi = () => {
+const LayananApi = () => {
 
-  const getAllLayanan = (): Promise<AllLayananResponse> => {
-    return new Promise((resolve, reject) => {
-      parseLayananTable((data: DLayanan[]) => {
-        var allLayananResponse: AllLayananResponse = data.map((data: DLayanan) => {
-          const { id, title, category, thumbnail } = data;
-          return { id, title, category, thumbnail } as AllLayananItem;
-        })
-        resolve(allLayananResponse);
-      })
+  const getAllLayanan = async (): Promise<AllLayananResponse> => {
+
+    let allLayanan: DLayanan[] = [];
+    await fetchLayananStream((result: Papa.ParseStepResult<DLayanan>) => {
+      let data = transformLayananData(result.data);
+      if (data != null)
+        allLayanan.push(data);
     })
+
+    const result = allLayanan.map((data: DLayanan) => {
+      const { id, title, category, thumbnail } = data
+      return { id, title, category, thumbnail } as AllLayananItem
+    })
+
+    return result;
   }
 
   const getLayananById = async (targetId: string, takeOthersCount: number = 3): Promise<LayananResponse | null> => {
@@ -61,7 +66,7 @@ const layananApi = () => {
 
     let layananData: DLayanan[] = []
     await fetchLayananStream((result: Papa.ParseStepResult<DLayanan>) => {
-      let data = transformSingleLayananData(result.data);
+      let data = transformLayananData(result.data);
       if (data != null)
         layananData.push(data);
     })
@@ -95,4 +100,4 @@ const layananApi = () => {
   }
 }
 
-export default layananApi;
+export default LayananApi;
