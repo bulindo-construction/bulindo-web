@@ -1,60 +1,15 @@
-import { layananTable } from "../config";
+import { layananTable, fetchDataStream, parseTable } from "../config";
 import Papa from "papaparse";
 
 export type AllLayananItem = Omit<DLayanan, "content" | "folder">
 export type AllLayananResponse = AllLayananItem[]
 export type LayananResponse = Layanan & { others: AllLayananItem[] } | null;
 
-const parseLayananTable = (callbackFn: Function) => {
-  Papa.parse(layananTable, {
-    download: true,
-    header: true,
-    complete: (results: Papa.ParseResult<DLayanan>) => {
-      var data = transformLayananData(results.data);
-      callbackFn(data);
-    }
-  })
-}
-
-const fetchLayananStream = async (stepCallbackFn: Function) => {
-  return fetch(layananTable)
-    .then(async (response) => {
-      const readableStreamBody = response.body;
-      const papaWriteStream = new WritableStream<Uint8Array>({
-        write(chunk) {
-          var row = new TextDecoder().decode(chunk);
-          Papa.parse(row, {
-            header: true,
-            encoding: "utf-8",
-            step: (result: Papa.ParseStepResult<DLayanan>) => {
-              stepCallbackFn(result)
-              this.close
-            }
-          })
-        },
-        close() { console.log("Stream closed...") },
-        abort(err) {
-          console.error("Sink error:", err);
-          throw new Error(err);
-        }
-      })
-      readableStreamBody?.pipeTo(papaWriteStream);
-    })
-}
-
 function transformLayananData(raw: DLayanan[]): DLayanan[] {
   var processedData: DLayanan[] = [];
   raw.forEach((data: DLayanan) => {
-    let transformedData = {
-      id: data.id,
-      title: data.title,
-      category: data.category,
-      content: data.content,
-      folder: data.folder,
-      thumbnail: data.thumbnail,
-    } satisfies DLayanan;
-    let values = Object.values(transformedData);
-    if (values.some((val) => val != "")) {
+    let transformedData = transformSingleLayananData(data)
+    if (transformedData != null) {
       processedData.push(transformedData);
     }
   });
@@ -78,8 +33,16 @@ function transformSingleLayananData(raw: DLayanan): DLayanan | null {
     return null;
 }
 
+const parseLayananTable = (callbackFn: Function) => {
+  return parseTable(layananTable, transformLayananData, callbackFn);
+}
 
-export const layananApi = () => {
+const fetchLayananStream = async (stepCallbackFn: Function) => {
+  return fetchDataStream(layananTable, stepCallbackFn);
+}
+
+const layananApi = () => {
+
   const getAllLayanan = (): Promise<AllLayananResponse> => {
     return new Promise((resolve, reject) => {
       parseLayananTable((data: DLayanan[]) => {
@@ -131,3 +94,5 @@ export const layananApi = () => {
     getLayananById
   }
 }
+
+export default layananApi;

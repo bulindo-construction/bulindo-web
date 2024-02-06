@@ -3,9 +3,9 @@
 import { StaticJumbotron } from "@/app/components/carousel";
 import layananHighlight from "@/public/jumbotron/Jumbo-2.png";
 import CardLayanan from "./CardLayanan";
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import {
-  layananApi,
+import { useEffect, useState } from "react";
+import layananApi from "@/app/database/sheets/layanan";
+import type {
   AllLayananItem,
   AllLayananResponse,
 } from "@/app/database/sheets/layanan";
